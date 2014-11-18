@@ -31,7 +31,7 @@ class Animate {
   })
 
   var snapBehavior: UISnapBehavior = UISnapBehavior(item: view, snapToPoint: reference.center)
-  animator.addBehavior(snapBehavior)
+    animator.addBehavior(snapBehavior)
   }
 }
 
