@@ -12,7 +12,7 @@ import UIKit
 
 class Animate {
   var animator: UIDynamicAnimator!
-  func move(delay: NSTimeInterval, reference: UIView, view: UIView, x: CGFloat = 0.001, y: CGFloat = 0.001, alpha: CGFloat = 0.001, w:CGFloat = 0.001, h:CGFloat = 0.001, callback: (finished:Bool) -> ()) {
+  func move(delay: NSTimeInterval, reference: UIView, view: UIView, x: CGFloat = 0.001, y: CGFloat = 0.001, alpha: CGFloat, w:CGFloat = 0.001, h:CGFloat = 0.001, callback: (finished:Bool) -> ()) {
     
 
     animator = UIDynamicAnimator(referenceView: reference)
@@ -30,6 +30,7 @@ class Animate {
       if(h != 0.001) {
         view.bounds.size.height = h
       }
+      
       view.alpha = alpha
       
     }, completion: {
@@ -88,10 +89,10 @@ extension UIView {
     Animate().move(delay, reference:reference, view:self, alpha: alpha, callback:callback)
   }
   public func fadeOut(delay:NSTimeInterval, reference: UIView, callback: (finished: Bool) -> ()) {
-    Animate().move(delay, reference:reference, view:self, callback:callback)
+    Animate().move(delay, reference:reference, view:self, alpha: 0, callback:callback)
   }
   public func fadeIn(delay:NSTimeInterval, reference: UIView, callback: (finished: Bool) -> ()) {
-    Animate().move(delay, reference:reference, view:self, callback:callback)
+    Animate().move(delay, reference:reference, view:self, alpha: 1, callback:callback )
   }
   
   
